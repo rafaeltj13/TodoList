@@ -1,35 +1,39 @@
 import {
-    TODO_ASYNC_REQUEST_STARTED,
-    CREATE_TODO_SUCCESS,
-    CREATE_TODO_FAILED
-} from '../actions/todo-actions';
+    SIGNIN_ASYNC_REQUEST_STARTED,
+    SIGNIN_SUCCESS,
+    SIGNIN_FAILED
+} from '../actions/signin-actions';
 
 const initialState = {
     loading: false,
     error: null,
-    todoList: []
+    token: '',
+    idUser: ''
 };
 
 const todo = (state = initialState, action) => {
     switch (action.type) {
-        case TODO_ASYNC_REQUEST_STARTED:
+        case SIGNIN_ASYNC_REQUEST_STARTED:
             return {
                 ...state,
                 loading: true,
             };
 
-        case CREATE_TODO_SUCCESS:
+        case SIGNIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                todoList: [...state.todoList, action.data]
+                token: action.data.token,
+                idUser: action.data.idUser
             };
 
         case CREATE_TODO_FAILED:
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                error: action.error,
+                token: '',
+                idUser: ''
             };
 
         default:

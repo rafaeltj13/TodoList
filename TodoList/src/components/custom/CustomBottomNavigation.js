@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Link } from 'react-router-native';
+import { withRouter } from 'react-router-native';
 import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
 
 const CustomBottomNavigation = ({ ...props }) => {
@@ -8,16 +8,17 @@ const CustomBottomNavigation = ({ ...props }) => {
 
     const handlePress = activeBtn => {
         setActive(activeBtn);
+        props.history.push(`/${activeBtn}`);
     };
 
     return (
-        <Footer style={styles.container}>
+        <Footer>
             <FooterTab>
                 <Button vertical
                     onPress={() => handlePress('todoList')}
-                    component={Link} to={`/`}
-                    active={active === 'todo'}
+                    active={active === 'todoList'}
                 >
+
                     <Icon name="list" />
                     <Text>Tarefas</Text>
                 </Button>
@@ -33,10 +34,4 @@ const CustomBottomNavigation = ({ ...props }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        // height: '6vh'
-    }
-});
-
-export default CustomBottomNavigation;
+export default withRouter(CustomBottomNavigation);
