@@ -13,7 +13,12 @@ const CustomTextField = ({ onClick, label, rounded, ...props }) => {
 const styles = StyleSheet.create({
     button: {
         width: '100%',
-        textAlign: 'center'
+        marginTop: 15,
+        marginTop: 15,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

@@ -10,7 +10,7 @@ import Button from '../custom/CustomButton';
 
 const TodoForm = props => {
     const fields = props;
-    const { isSubmitting, handleSubmit, setSubmitting, loading, error, newNotification, open, tattooDialog } = props;
+    const { isSubmitting, handleSubmit, setSubmitting, loading, error } = props;
 
     return (
         <Form>

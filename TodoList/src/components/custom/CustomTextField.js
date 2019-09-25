@@ -8,7 +8,7 @@ const CustomTextField = ({ rounded, label, field, name, ...props }) => {
     }
 
     return (
-        <Item rounded={rounded} floatingLabel>
+        <Item rounded={rounded} floatingLabel stu>
             <Label>{label}</Label>
             <Input onChangeText={handleChange.bind(this)} />
         </Item>
