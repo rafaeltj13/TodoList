@@ -5,15 +5,15 @@ import { Content, Card, CardItem, Text, Body } from "native-base";
 const CustomCard = ({ todo, ...props }) => {
     return (
         <Card style={styles.card}>
-            <CardItem header bordered>
+            <CardItem header bordered button {...props}>
                 <Text>{todo.title}</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button {...props}>
                 <Body>
                     <Text>{todo.description}</Text>
                 </Body>
             </CardItem>
-            <CardItem footer bordered bordered>
+            <CardItem footer bordered button {...props}>
                 <Text style={styles[`${todo.status}`]}>{todo.status}</Text>
             </CardItem>
         </Card>

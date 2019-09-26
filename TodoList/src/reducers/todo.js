@@ -1,13 +1,21 @@
 import {
     TODO_ASYNC_REQUEST_STARTED,
     CREATE_TODO_SUCCESS,
-    CREATE_TODO_FAILED
+    CREATE_TODO_FAILED,
+    SET_DETAIL_TODO,
+    SHOW_DIALOG
 } from '../actions/todo-actions';
 
 const initialState = {
     loading: false,
     error: null,
-    todoList: []
+    todoList: [{
+        title: 'teste',
+        description: 'teste',
+        status: 'Fazendo'
+    }],
+    detailTodo: { title: '', description: '', status: '' },
+    openDialog: false
 };
 
 const todo = (state = initialState, action) => {
@@ -31,6 +39,18 @@ const todo = (state = initialState, action) => {
                 loading: false,
                 error: action.error
             };
+
+        case SET_DETAIL_TODO:
+            return {
+                ...state,
+                detailTodo: action.todo
+            }
+
+        case SHOW_DIALOG:
+            return {
+                ...state,
+                openDialog: action.show
+            }
 
         default:
             return state;

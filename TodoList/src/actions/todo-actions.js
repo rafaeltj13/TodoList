@@ -21,3 +21,15 @@ export const createTodoRequest = todoBody => {
         dispath(createTodoSuccess(todoBody));
     };
 };
+
+export const SET_DETAIL_TODO = 'SET_DETAIL_TODO';
+export const setDetailTodo = todo => ({
+    type: SET_DETAIL_TODO,
+    todo
+});
+
+export const SHOW_DIALOG = 'SHOW_DIALOG';
+export const showDialog = show => ({
+    type: SHOW_DIALOG,
+    show
+});

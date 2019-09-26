@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-native';
+import { withRouter } from 'react-router-native';
 import { withFormik } from 'formik';
 import { signinRequest } from '../../actions/signin-actions';
 import FormActions from '../custom/CustomFormActions';
