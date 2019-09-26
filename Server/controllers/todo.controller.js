@@ -1,19 +1,18 @@
 const todoService = require('../services/todo.service');
-const restService = require('../utils/rest.service');
 
 exports.getAll = async (req, res, next) => {
     try {
         const todos = await todoService.getAll();
         restService.sendJson(res, 200, todos);
+        res.status(200).json(todos);
     } catch (error) {
         next(error);
     }
 };
-
 exports.get = async (req, res, next) => {
     try {
         const todo = await todoService.get(req.params.id);
-        restService.sendJson(res, 200, todo);
+        res.status(200).json(todo);
     } catch (error) {
         next(error);
     }
@@ -22,7 +21,7 @@ exports.get = async (req, res, next) => {
 exports.add = async (req, res, next) => {
     try {
         const createdTodo = await todoService.add(req.body);
-        restService.sendJson(res, 201, createdTodo);
+        res.status(201).json(createdTodo);
     } catch (error) {
         next(error);
     }
@@ -31,7 +30,7 @@ exports.add = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     try {
         const updatedTodo = await todoService.update(req.params.id, req.body);
-        restService.sendJson(res, 204, updatedTodo);
+        res.status(204).json(updatedTodo);
     } catch (error) {
         next(error);
     }
@@ -40,7 +39,7 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
     try {
         const deletedTodo = await todoService.dele(req.params.id);
-        restService.sendJson(res, 200, deletedTodo);
+        res.status(200).json(deletedTodo);
     } catch (error) {
         next(error);
     }

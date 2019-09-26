@@ -1,32 +1,37 @@
 const database = {
-
     development: {
-        username: "root",
-        password: "root",
-        database: "todoList",
-        dialect: "mysql",
-        options: {
-            host: "localhost",
-            dialect: "mysql",
-            pool: {
-                max: 5,
-                min: 0,
-                idle: 10000
+        dialect: 'mysql',
+        username: 'root',
+        password: 'root',
+        database: 'todoList',
+        host: 'localhost',
+        dialectOptions: {
+            options: {
+                requestTimeout: 0
+            }
+        }
+    },
+    test: {
+        dialect: 'mysql',
+        username: 'root',
+        password: 'root',
+        database: 'todoList-test',
+        host: 'localhost',
+        dialectOptions: {
+            options: {
+                requestTimeout: 0
             }
         }
     },
     production: {
-        username: "",
-        password: "",
-        database: "",
-        dialect: "mysql",
-        options: {
-            host: "",
-            dialect: "mysql",
-            pool: {
-                max: 5,
-                min: 0,
-                idle: 10000
+        dialect: 'mysql',
+        username: '',
+        password: '',
+        database: 'todoList',
+        host: 'localhost',
+        dialectOptions: {
+            options: {
+                requestTimeout: 0
             }
         }
     }
