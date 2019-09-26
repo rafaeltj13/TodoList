@@ -12,7 +12,6 @@ const CustomFormActions = props => {
 
 const styles = StyleSheet.create({
     root: {
-        padding: '3.5%'
     }
 });
 

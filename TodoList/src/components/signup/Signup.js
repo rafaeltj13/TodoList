@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-native';
+import { withRouter } from 'react-router-native';
 import { withFormik } from 'formik';
-import { signinRequest } from '../../actions/signin-actions';
+import { signupRequest } from '../../actions/signup-actions';
 import FormActions from '../custom/CustomFormActions';
 import TextField from '../custom/CustomTextField';
 import Button from '../custom/CustomButton';
 import Form from '../custom/CustomForm';
 import { H3 } from 'native-base';
 
-const Signin = props => {
+const Signup = props => {
     const fields = props;
     const { isSubmitting, handleSubmit, setSubmitting, loading, error } = props;
 
     return (
         <Form>
-            <H3 style={{ textAlign: 'center' }}>Bem vindo ao TodoList!</H3>
+            <H3 style={{ textAlign: 'center' }}>Cadastro</H3>
             <TextField
                 required
                 name={'login'}
@@ -28,22 +28,28 @@ const Signin = props => {
                 label={'Senha'}
                 field={fields}
             />
+            <TextField
+                required
+                name={'confirmPassword'}
+                label={'Confirmar senha'}
+                field={fields}
+            />
 
             <FormActions>
-                <Button label={'Entrar'} onClick={handleSubmit} rounded />
-                <Button label={'Cadastrar-se'} onClick={() => props.history.push(`/signup`)} rounded/>
+                <Button label={'Cadastrar'} onClick={handleSubmit} rounded />
+                <Button label={'Voltar'} onClick={() => props.history.push('/signin')} rounded />
             </FormActions>
         </Form>
     );
 };
 
-const mapStateToProps = ({ signin }) => ({
-    loading: signin.loading,
-    error: signin.error,
+const mapStateToProps = ({ signup }) => ({
+    loading: signup.loading,
+    error: signup.error,
 });
 
 const mapDispatchToProps = dispatch => ({
-    signin: signinBody => dispatch(signinRequest(signinBody)),
+    signup: userBody => dispatch(signupRequest(userBody)),
 });
 
 export default connect(
@@ -55,14 +61,15 @@ export default connect(
             mapPropsToValues: () => {
                 return {
                     login: '',
-                    password: ''
+                    password: '',
+                    confirmPassword: ''
                 };
             },
 
             handleSubmit: (values, { props }) => {
-                console.log('ojksdaopfksadfpo')
-                props.signin(values)
+                console.log('asdfhoisafio')
+                props.signup(values)
             },
-        })(Signin)
+        })(Signup)
     )
 );

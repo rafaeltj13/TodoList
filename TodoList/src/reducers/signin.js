@@ -12,7 +12,7 @@ const initialState = {
     idUser: ''
 };
 
-const todo = (state = initialState, action) => {
+const signin = (state = initialState, action) => {
     switch (action.type) {
         case SIGNIN_ASYNC_REQUEST_STARTED:
             return {
@@ -44,4 +44,4 @@ const todo = (state = initialState, action) => {
     }
 };
 
-export default todo;
+export default signin;

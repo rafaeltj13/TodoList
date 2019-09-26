@@ -11,8 +11,8 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/signin" component={Signin} />
-          <Route path="/signup" component={Signup} />
+          {/* <Route path="/signin" component={Signin} /> */}
+          {/* <Route path="/signup" component={Signup} /> */}
           <Route path="/" component={Home} />
         </Switch>
       </Router>

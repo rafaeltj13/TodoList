@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
 import { withRouter } from 'react-router-native';
 import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
 
 const CustomBottomNavigation = ({ ...props }) => {
-    const [active, setActive] = useState('todoList');
+    const [active, setActive] = useState('list');
 
     const handlePress = activeBtn => {
         setActive(activeBtn);
-        props.history.push(`/${activeBtn}`);
+        props.history.push(`/todo/${activeBtn}`);
     };
 
     return (
         <Footer>
             <FooterTab>
                 <Button vertical
-                    onPress={() => handlePress('todoList')}
-                    active={active === 'todoList'}
+                    onPress={() => handlePress('list')}
+                    active={active === 'list'}
                 >
 
                     <Icon name="list" />

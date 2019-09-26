@@ -8,7 +8,7 @@ import HomeRoutes from './HomeRoutes';
 import { signinAsyncRequestStarted } from '../../actions/signin-actions';
 
 const Home = ({ token }) => {
-    if (!token) return <Redirect to="/signin" />;
+    // if (!token) return <Redirect to="/signin" />;
 
     return (
         <Container>

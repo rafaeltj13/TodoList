@@ -4,7 +4,7 @@ import { Button, Text } from "native-base";
 
 const CustomTextField = ({ onClick, label, rounded, ...props }) => {
     return (
-        <Button style={styles.button} onPress={onClick()} rounded={rounded} primary>
+        <Button {...props} style={styles.button} onPress={() => onClick()} rounded={rounded} primary>
             <Text>{label}</Text>
         </Button>
     );

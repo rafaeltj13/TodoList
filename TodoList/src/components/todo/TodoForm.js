@@ -36,7 +36,7 @@ const TodoForm = props => {
                 }
             />
 
-            <Button label={'Criar tarefa'} onClick={() => handleSubmit} />
+            <Button label={'Criar tarefa'} onClick={handleSubmit} />
         </Form>
     );
 };

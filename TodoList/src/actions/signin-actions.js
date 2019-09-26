@@ -13,20 +13,21 @@ export const signinSuccess = data => ({
 
 export const SIGNIN_FAILED = 'SIGNIN_FAILED';
 export const signinFailed = error => ({
-    type: CREATE_TODO_FAILED,
+    type: SIGNIN_FAILED,
     error
 });
 
 export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
 export const signinRequest = signinBody => {
-    return dispath => {
+    return dispatch => {
         dispatch(signinAsyncRequestStarted());
-        Api.post(`signin`, signinBody)
-            .then(({ data }) => {
-                dispatch(signinSuccess(data));
-            })
-            .catch(({ message }) => {
-                dispatch(signinFailed(message));
-            });
+    }
+
+};
+
+export const CREATE_TODO_REQUEST = 'CREATE_TODO_REQUEST';
+export const createTodoRequest = todoBody => {
+    return dispath => {
+        dispath(createTodoSuccess(todoBody));
     };
 };
