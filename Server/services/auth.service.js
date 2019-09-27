@@ -1,4 +1,5 @@
 const { Users } = require('../models');
+const jwt = require('jsonwebtoken');
 
 let secret = 't0d0';
 
@@ -16,13 +17,13 @@ exports.verifyToken = (token, next) => {
 
 exports.signin = async body => {
     const user = await Users.findOne({
-        where: { username: body.username }
+        where: { login: body.username }
     });
 
-    const jwt = generateJWT(user);
+    const token = generateJWT(user);
     delete user.dataValues['password'];
 
-    return { user, jwt }
+    return { user, token }
 };
 
 const generateJWT = user => {
