@@ -3,7 +3,6 @@ const todoService = require('../services/todo.service');
 exports.getAll = async (req, res, next) => {
     try {
         const todos = await todoService.getAll();
-        restService.sendJson(res, 200, todos);
         res.status(200).json(todos);
     } catch (error) {
         next(error);
@@ -11,7 +10,7 @@ exports.getAll = async (req, res, next) => {
 };
 exports.get = async (req, res, next) => {
     try {
-        const todo = await todoService.get(req.params.id);
+        const todo = await todoService.get(req.params.idTodo);
         res.status(200).json(todo);
     } catch (error) {
         next(error);

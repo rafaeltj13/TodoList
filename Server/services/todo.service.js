@@ -16,6 +16,6 @@ exports.update = async (id, todo) => {
     return await Todos.update(todo, { where: { id } });
 };
 
-exports.update = async id => {
+exports.delete = async id => {
     return await Todos.delete(id);
 };

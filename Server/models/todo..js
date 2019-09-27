@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        desctiption: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         }
     })
+
+    Todos.associate = function (models) {
+        Todos.belongsTo(models.Users, { as: 'user', foreignKey: 'userId'});
+    };
 
     return Todos
 }

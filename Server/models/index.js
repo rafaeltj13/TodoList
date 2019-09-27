@@ -4,7 +4,7 @@ const path = require('path');
 // Data types
 const Sequelize = require('sequelize');
 
-const config = require('../database/config');
+const config = require('../database/config/config');
 
 const database = {};
 const sequelize = new Sequelize(config.database, config.username, config.password, config.options);
