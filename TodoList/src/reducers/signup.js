@@ -7,8 +7,6 @@ import {
 const initialState = {
     loading: false,
     error: null,
-    token: '',
-    idUser: ''
 };
 
 const signup = (state = initialState, action) => {
@@ -16,20 +14,21 @@ const signup = (state = initialState, action) => {
         case SIGNUP_ASYNC_REQUEST_STARTED:
             return {
                 ...state,
-                loading: true,
+                loading: true
             };
 
         case SINGUP_SUCCESS:
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: 'sadfjmdsafjksdfpo'
             };
 
         case SIGNUP_FAILED:
             return {
                 ...state,
                 loading: false,
-                error: action.error,
+                error: action.error
             };
 
         default:

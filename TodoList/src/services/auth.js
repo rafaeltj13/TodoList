@@ -1,6 +1,6 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export const getToken = () =>
-    AsyncStorage.getItem('signin') ? localStorage.getItem('signin').token : '';
+    AsyncStorage.getItem('signin') ? AsyncStorage.getItem('signin') : '';
 
 export default getToken;

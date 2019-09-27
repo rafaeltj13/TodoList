@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import { withFormik } from 'formik';
@@ -11,6 +11,18 @@ import Button from '../custom/CustomButton';
 const TodoForm = props => {
     const fields = props;
     const { isSubmitting, handleSubmit, setSubmitting, loading, error } = props;
+
+    useEffect(
+        () => {
+            if (!loading && isSubmitting) {
+                setSubmitting(false);
+                if (!error) {
+                    props.history.push('/todo/list');
+                }
+            }
+        },
+        [loading],
+    );
 
     return (
         <Form>
@@ -41,9 +53,10 @@ const TodoForm = props => {
     );
 };
 
-const mapStateToProps = ({ todo }) => ({
+const mapStateToProps = ({ todo, signin }) => ({
     loading: todo.loading,
     error: todo.error,
+    idUser: signin.idUser
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -65,7 +78,7 @@ export default connect(
             },
 
             handleSubmit: (values, { props }) => {
-                props.createTodo(values)
+                props.createTodo({ ...values, userId: props.idUser })
             },
         })(TodoForm)
     )

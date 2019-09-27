@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import { withFormik } from 'formik';
@@ -13,12 +13,24 @@ const Signin = props => {
     const fields = props;
     const { isSubmitting, handleSubmit, setSubmitting, loading, error } = props;
 
+    useEffect(
+        () => {
+            if (!loading && isSubmitting) {
+                setSubmitting(false);
+                if (!error) {
+                    props.history.push('/todo/list');
+                }
+            }
+        },
+        [loading],
+    );
+
     return (
         <Form>
             <H3 style={{ textAlign: 'center' }}>Bem vindo ao TodoList!</H3>
             <TextField
                 required
-                name={'login'}
+                name={'username'}
                 label={'Login'}
                 field={fields}
             />
@@ -27,11 +39,12 @@ const Signin = props => {
                 name={'password'}
                 label={'Senha'}
                 field={fields}
+                password={true}
             />
 
             <FormActions>
                 <Button label={'Entrar'} onClick={handleSubmit} rounded />
-                <Button label={'Cadastrar-se'} onClick={() => props.history.push(`/signup`)} rounded/>
+                <Button label={'Cadastrar-se'} onClick={() => props.history.push(`/signup`)} rounded />
             </FormActions>
         </Form>
     );
@@ -54,13 +67,12 @@ export default connect(
         withFormik({
             mapPropsToValues: () => {
                 return {
-                    login: '',
+                    username: '',
                     password: ''
                 };
             },
 
             handleSubmit: (values, { props }) => {
-                console.log('ojksdaopfksadfpo')
                 props.signin(values)
             },
         })(Signin)

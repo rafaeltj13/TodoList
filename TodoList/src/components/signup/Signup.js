@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import { withFormik } from 'formik';
@@ -12,6 +12,18 @@ import { H3 } from 'native-base';
 const Signup = props => {
     const fields = props;
     const { isSubmitting, handleSubmit, setSubmitting, loading, error } = props;
+
+    useEffect(
+        () => {
+            if (!loading && isSubmitting) {
+                setSubmitting(false);
+                if (!error) {
+                    props.history.push('/signin');
+                }
+            }
+        },
+        [loading],
+    );
 
     return (
         <Form>
@@ -27,12 +39,14 @@ const Signup = props => {
                 name={'password'}
                 label={'Senha'}
                 field={fields}
+                password={true}
             />
             <TextField
                 required
                 name={'confirmPassword'}
                 label={'Confirmar senha'}
                 field={fields}
+                password={true}
             />
 
             <FormActions>
@@ -67,8 +81,9 @@ export default connect(
             },
 
             handleSubmit: (values, { props }) => {
-                console.log('asdfhoisafio')
-                props.signup(values)
+                delete values.confirmPassword;
+                props.signup(values);
+                props.history.push('/signin');
             },
         })(Signup)
     )

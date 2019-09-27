@@ -6,7 +6,6 @@ import { View, H3 } from "native-base";
 import { setDetailTodo, showDialog } from '../../actions/todo-actions';
 
 const TodoDetails = ({ openDialog, todo, detailTodo, closeDialog, ...props }) => {
-    console.log(todo)
     const {title, description, status} = todo;
     
     const handleClose = () => {
@@ -18,9 +17,6 @@ const TodoDetails = ({ openDialog, todo, detailTodo, closeDialog, ...props }) =>
         <View>
             <Dialog
                 visible={openDialog}
-                // dialogAnimation={new SlideAnimation({
-                //     slideFrom: 'bottom',
-                // })}
                 footer={
                     <DialogFooter>
                         <DialogButton

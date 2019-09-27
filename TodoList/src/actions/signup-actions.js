@@ -20,6 +20,14 @@ export const signupFailed = error => ({
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const signupRequest = userBody => {
     return dispatch => {
-        dispatch(signupAsyncRequestStarted())
+        dispatch(signupAsyncRequestStarted());
+
+        Api.post(`users`, userBody)
+            .then(({ data }) => {
+                dispatch(signupSuccess(data));
+            })
+            .catch(({ message }) => {
+                dispatch(signupFailed(message));
+            });
     }
 };

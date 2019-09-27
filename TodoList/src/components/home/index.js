@@ -5,10 +5,9 @@ import { withRouter, Redirect } from "react-router";
 import { Container } from 'native-base';
 import BottomNavigation from '../custom/CustomBottomNavigation';
 import HomeRoutes from './HomeRoutes';
-import { signinAsyncRequestStarted } from '../../actions/signin-actions';
 
 const Home = ({ token }) => {
-    // if (!token) return <Redirect to="/signin" />;
+    if (!token) return <Redirect to="/signin" />;
 
     return (
         <Container>

@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
     SIGNIN_ASYNC_REQUEST_STARTED,
     SIGNIN_SUCCESS,
@@ -21,13 +21,13 @@ const signin = (state = initialState, action) => {
             };
 
         case SIGNIN_SUCCESS:
-            AsyncStorage.setItem('signin', `Bearer ${action.data.token}`)
+            AsyncStorage.setItem('signin', action.data.token)
 
             return {
                 ...state,
                 loading: false,
                 token: action.data.token,
-                idUser: action.data.idUser
+                idUser: action.data.user.id
             };
 
         case SIGNIN_FAILED:

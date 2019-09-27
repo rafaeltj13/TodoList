@@ -2,6 +2,8 @@ import {
     TODO_ASYNC_REQUEST_STARTED,
     CREATE_TODO_SUCCESS,
     CREATE_TODO_FAILED,
+    GET_TODOS_SUCCESS,
+    GET_TODOS_FAILED,
     SET_DETAIL_TODO,
     SHOW_DIALOG
 } from '../actions/todo-actions';
@@ -30,10 +32,23 @@ const todo = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                todoList: [...state.todoList, action.data]
             };
 
         case CREATE_TODO_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: action.error
+            };
+
+        case GET_TODOS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                todoList: action.data
+            };
+
+        case GET_TODOS_FAILED:
             return {
                 ...state,
                 loading: false,

@@ -25,7 +25,7 @@ const CustomBottomNavigation = ({ ...props }) => {
                     onPress={() => handlePress('create')}
                     active={active === 'create'}
                 >
-                    <Icon name="add" />
+                    <Icon name="plus" />
                     <Text>Adicionar</Text>
                 </Button>
             </FooterTab>
